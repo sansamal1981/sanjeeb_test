@@ -1,0 +1,74 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <string.h>
+
+//purpose : To identify whether the input string is a pallindrome string or not. 
+bool IsPallindrome(const std::string& f_strWord);
+
+//purpose : To remove the space from start and end of the string.
+std::string trim(const std::string& f_strWord);
+
+int main()
+{
+	std::string strWord = "Step on no pets"; 
+	if(IsPallindrome(strWord))
+	    std::cout<< "It is a palindrome string";
+	    
+	else
+	    std::cout<< "It is not a palindrome string";
+	return 1;
+}
+
+bool IsPallindrome(const std::string& f_strWord)
+{
+  // Extra space are handled. Hence trim the string.
+  std::string l_strWord = trim(f_strWord);
+  if(l_strWord.empty())
+  {
+    // If empty string then return false.
+    return false;
+  }
+  size_t l_length = l_strWord.size();
+  bool isPallindrome = true;
+  for(size_t l_index = 0; l_index  < l_length/2; ++l_index)
+  {
+    // Checking for pallindrome string
+	if(std::toupper(l_strWord[l_index]) != std::toupper(l_strWord[l_length - l_index - 1]))
+	{
+		isPallindrome = false;
+		break;
+	}
+  }
+  return isPallindrome;
+}
+
+std::string trim(const std::string& f_strWord)
+{
+    size_t l_nLength = f_strWord.length();
+    size_t l_left = 0;
+    // Exclude space from left of the input string
+    for(;l_left < l_nLength; ++l_left)
+    {
+        if(!std::isspace(f_strWord[l_left]))
+            break;
+    }
+    size_t l_right = l_nLength - 1;
+    if(l_left < l_nLength)
+    {
+        // Remove space from right of the input string
+        for(; l_right > l_left; --l_right)
+        {
+            if(!std::isspace(f_strWord[l_right]))
+                break;
+        }
+    }
+    return std::string(&f_strWord[l_left], &f_strWord[l_right+1]);
+}
+

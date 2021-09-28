@@ -1,0 +1,7 @@
+Question:
+A retail company maintains the data of its customers in the CUSTOMER table. Write a query to print the IDs and the NAMEs of the customers, sorted by CUSTOMER.NAME in descending order. I
+f two or more customers have the same CUSTOMER.NAME, then sort these by CUSTOMER.ID in ascending order.
+
+Answer : 
+
+SELECT ID,NAME FROM CUSTOMER ORDER BY NAME DESC, ID ASC; 

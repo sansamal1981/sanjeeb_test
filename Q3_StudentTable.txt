@@ -1,0 +1,21 @@
+Question:
+The given table 'students' contains the total marks of a student in a class. 
+The teacher of the class wants to assign grades to the students with the following logic:
+	Greater > 90 | A+
+	Greater > 70 | A
+	Greater > 50 | B
+	Greater >= 40 | C
+	Less than 40 | Fail
+Write an SQL query to achieve the same. Return ID, name, marks, grade for each student.
+
+Answer : 
+
+SELECT id, name, marks,
+CASE
+    WHEN marks > 90 THEN 'A+'
+    WHEN marks > 70 AND marks <= 90 THEN 'A'
+    WHEN marks > 50 AND marks <= 70 THEN 'B'
+    WHEN marks >= 40 AND marks <= 50 THEN 'C'
+    ELSE 'FAIL'
+    END AS grade
+FROM students;

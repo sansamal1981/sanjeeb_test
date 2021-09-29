@@ -15,7 +15,7 @@ int main()
 {
     std::string strWord;
     std::cout << "Enter a word to check for pallindrome string: ";
-    std::cin >> strWord;
+    std::getline(std::cin, strWord);
     
 	if(IsPallindrome(strWord))
 	    std::cout<< "This string is a palindrome string.";
